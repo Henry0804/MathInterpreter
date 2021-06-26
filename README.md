@@ -18,8 +18,8 @@ The function does this to all multiply and divide nodes.
 That is about how it works, it slowly builds up generating a tree-like structure:  
 1  +  1  *  2 becomes:  
 
-   ADD  
-  1  MUL  
-     1   2
+---ADD  
+--1--MUL  
+----1---2
 
 In order for the add to complete, it must first complete a MUL operation, or multiply.
