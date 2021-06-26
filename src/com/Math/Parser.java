@@ -128,12 +128,17 @@ public class Parser {
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
       if (type==TokenType.Operator&&(value.equals("+") || value.equals("-"))) {
-        Node left = Nodes.get(i-1);
+        Node left;
+        if (i-1==-1) {left = new NumberNode(new Token(TokenType.Number,"0"));} else {
+          left = Nodes.get(i - 1);
+        }
         Node right = Nodes.get(i+1);
         OperatorNode out = new OperatorNode(n.GetToken(),left,right);
         Nodes.set(i,out);
-        Nodes.remove(i-1);
-        Nodes.remove(i);
+        if (i-1==-1) {i++;} else {
+          Nodes.remove(i - 1);
+          Nodes.remove(i);
+        }
         i--;
       }
 
