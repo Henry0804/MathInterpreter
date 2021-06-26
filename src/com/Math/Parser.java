@@ -137,6 +137,7 @@ public class Parser {
         Nodes.set(i,out);
         if (i-1==-1) {Nodes.remove(i);Nodes.get(i).GetToken().Value = "-"+Nodes.get(i).GetToken().Value;i++;} else {
           Nodes.remove(i - 1);
+          Nodes.remove(i);
         }
         i--;
       }
