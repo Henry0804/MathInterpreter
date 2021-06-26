@@ -29,7 +29,7 @@ public class Parser {
   }
 
   public static ArrayList<Node> Parse(ArrayList<Node> Nodes) {
-    return ConvertExpression(ConvertFactors(ConvertPow(ConvertParenthesis(Nodes))));
+    return ConvertExpression(ConvertFactors(ConvertPow(ConvertParenthesis(FixNegativeNumbers(Nodes)))));
   }
 
   public static void RemoveRange(ArrayList<Node> Nodes,int start,int end) {
@@ -121,6 +121,20 @@ public class Parser {
     return Nodes;
   }
 
+  public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {
+    for (int i = 0; i < Nodes.size(); i++) {
+      Node n = Nodes.get(i);
+
+      TokenType type = n.GetToken().Type;
+      String value = n.GetToken().Value;
+      if (type == TokenType.Operator && (value.equals("+-") || value.equals("--") || value.equals("*-") || value.equals("/-") || value.equals("**-"))) {
+        n.GetToken().Value = n.GetToken().Value.substring(0, n.GetToken().Value.length() - 1);
+        Nodes.get(i + 1).GetToken().Value = "-" + Nodes.get(i + 1).GetToken().Value;
+      }
+    }
+    return Nodes;
+  }
+
   public static ArrayList<Node> ConvertExpression(ArrayList<Node> Nodes) {
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
@@ -133,9 +147,11 @@ public class Parser {
           left = Nodes.get(i - 1);
         }
         Node right = Nodes.get(i+1);
+        //if (left.GetToken().Type!=TokenType.Number) {left = new NumberNode(new Token(TokenType.Number,"0"));}
         OperatorNode out = new OperatorNode(n.GetToken(),left,right);
         Nodes.set(i,out);
-        if (i-1==-1) {Nodes.remove(i);Nodes.get(i).GetToken().Value = "-"+Nodes.get(i).GetToken().Value;i++;} else {
+        if (i-1==-1) {Nodes.remove(i);Nodes.get(i).GetToken().Value = "-"+Nodes.get(i).GetToken().Value;i++;}
+        else {
           Nodes.remove(i - 1);
           Nodes.remove(i);
         }
