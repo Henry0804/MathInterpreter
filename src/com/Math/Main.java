@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
+    System.out.println("Starting calc...");
     Scanner scan = new Scanner(System.in);
     int debug = 0;
     while (true) {
