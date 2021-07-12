@@ -1,3 +1,13 @@
+# Run info
+
+Download the jar from the latest release.
+Put the file in the downloads folder or for linux the home folder.
+Now go to cmd (or bash) and type:
+cd Downloads (or) cd ~
+Now install java if you don't have it and run:
+java -jar filename.jar
+Now enjoy your mathinterpreter!
+
 # MathInterpreter
  A simple math interpreter.
 
