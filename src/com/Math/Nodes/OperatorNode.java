@@ -32,13 +32,13 @@ public class OperatorNode implements Node {
 
   }
 
-  public @Override int QuickParse() {
+  public @Override float QuickParse() {
     switch (OperationToken.Value) {
       case "+": return LeftNode.QuickParse() + RightNode.QuickParse();
       case "-": return LeftNode.QuickParse() - RightNode.QuickParse();
       case "*": return LeftNode.QuickParse() * RightNode.QuickParse();
       case "/": return LeftNode.QuickParse() / RightNode.QuickParse();
-      case "**": return (int) Math.pow(LeftNode.QuickParse() , RightNode.QuickParse());
+      case "**": return (float) Math.pow(LeftNode.QuickParse() , RightNode.QuickParse());
     }
     return 0;
   }

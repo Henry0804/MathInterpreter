@@ -8,5 +8,5 @@ public interface Node {
   Node RightNode = null;
   ArrayList<Node> GetNodes();
   public String toString();
-  int QuickParse();
+  float QuickParse();
 }

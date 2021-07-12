@@ -23,8 +23,8 @@ public class NumberNode implements Node {
     return null;
   }
 
-  public @Override int QuickParse() {
-    return Integer.parseInt(OperationToken.Value);
+  public @Override float QuickParse() {
+    return Float.parseFloat(OperationToken.Value);
   }
 
   @Override

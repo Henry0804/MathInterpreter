@@ -121,7 +121,7 @@ public class Parser {
     return Nodes;
   }
 
-  public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {
+  public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {//Obsolete
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
 
