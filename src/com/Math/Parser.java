@@ -163,7 +163,7 @@ public class Parser {
     return Nodes;
   }
 
-  public static int QuickParse(ArrayList<Node> Nodes) {
+  public static float QuickParse(ArrayList<Node> Nodes) {
     return Nodes.get(0).QuickParse();
   }
 }

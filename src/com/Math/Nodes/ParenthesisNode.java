@@ -29,7 +29,7 @@ public class ParenthesisNode implements Node {
     return Nodes;
   }
 
-  public @Override int QuickParse() {
+  public @Override float QuickParse() {
     //return Parser.ConvertParenthesis(Nodes);
     return Nodes.get(0).QuickParse();
   }
