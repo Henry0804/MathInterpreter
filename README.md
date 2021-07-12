@@ -23,3 +23,6 @@ That is about how it works, it slowly builds up generating a tree-like structure
 ----1---2
 
 In order for the add to complete, it must first complete a MUL operation, or multiply.
+
+# Work In Progress discord server:
+https://discord.gg/xbBACUj5jw
