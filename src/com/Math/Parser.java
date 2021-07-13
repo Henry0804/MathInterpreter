@@ -42,18 +42,22 @@ public class Parser {
   public static ArrayList<Node> ConvertParenthesis(ArrayList<Node> Nodes) {
     int depth = 0;
     int start = 0;
+    ArrayList<String> Values = new ArrayList<>(5);
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type==TokenType.Parenthesis&&(value.equals("("))) {
+      if (type==TokenType.Parenthesis&&(!value.equals(")"))) {
+        Values.add(value);
         depth ++;
         if (depth==1) {
           start = i;
         }
       } else if (type==TokenType.Parenthesis&&value.equals(")")) {
         depth --;
+        String v = Values.get(depth);
+        Values.remove(depth);
         if (depth==0) {
           List<Node> split = Nodes.subList(start+1,i);
           ArrayList<Node> split2 = new ArrayList<Node>(split);
@@ -61,7 +65,9 @@ public class Parser {
           i = start;
           Nodes.remove(i);
 
-          Nodes.add(start,new ParenthesisNode(n.GetToken(),split2)/*element*/);
+
+
+          Nodes.add(start,new ParenthesisNode(new Token(TokenType.Parenthesis,v),split2)/*element*/);
         }
 
       }

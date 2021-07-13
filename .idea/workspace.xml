@@ -8,8 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2170fd96-126c-463c-bc58-f86e85aaa1ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/MathInterpreter_jar/MathInterpreter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MathInterpreter_jar/MathInterpreter.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
