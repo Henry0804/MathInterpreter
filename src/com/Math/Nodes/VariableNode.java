@@ -25,7 +25,8 @@ public class VariableNode implements Node {
   }
 
   public @Override float QuickParse(HashMap<String,Float> vars) {
-    return vars.get(OperationToken.Value);
+    if (vars.get(OperationToken.Value)!=null) {return vars.get(OperationToken.Value);}
+    return 0f;
   }
 
   @Override

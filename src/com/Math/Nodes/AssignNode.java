@@ -28,9 +28,10 @@ public class AssignNode implements Node {
   }
 
   public @Override float QuickParse(HashMap<String,Float> vars) {
+    float val = RightNode.QuickParse(vars);
     vars.remove(LeftNode.GetToken().Value);
-    vars.put(LeftNode.GetToken().Value,RightNode.QuickParse(vars));
-    return RightNode.QuickParse(vars);
+    vars.put(LeftNode.GetToken().Value,val);
+    return val;
   }
 
   @Override

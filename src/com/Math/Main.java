@@ -24,7 +24,9 @@ public class Main {
         v+=Test("2**3",8f);
         v+=Test("1/2",0.5f);
         v+=Test("5**8-7*(90)/3-84+6",390337f);
-        System.out.println(v+"/5 tests succeeded.");
+        v+=Test("x = 3",3f);
+        v+=Test("x = x + 1",1f);
+        System.out.println(v+"/7 tests succeeded.");
       }
       else if (input.equals("debug")) {debug++;if (debug==4) {debug = 0;};System.out.println("Debug mode is: "+debug);} else {
         switch(debug) {
