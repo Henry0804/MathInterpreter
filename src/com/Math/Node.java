@@ -1,6 +1,7 @@
 package com.Math;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface Node {
   Token GetToken();
@@ -8,5 +9,5 @@ public interface Node {
   Node RightNode = null;
   ArrayList<Node> GetNodes();
   public String toString();
-  float QuickParse();
+  float QuickParse(HashMap<String,Float> vars);
 }

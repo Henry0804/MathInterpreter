@@ -5,6 +5,7 @@ import com.Math.Parser;
 import com.Math.Token;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ParenthesisNode implements Node {
   public Token OperationToken = null;
@@ -29,12 +30,12 @@ public class ParenthesisNode implements Node {
     return Nodes;
   }
 
-  public @Override float QuickParse() {
+  public @Override float QuickParse(HashMap<String,Float> vars) {
     //return Parser.ConvertParenthesis(Nodes);
     switch (OperationToken.Value) {
       case "test(" : return 1f;
     }
-    return Nodes.get(0).QuickParse();
+    return Nodes.get(0).QuickParse(vars);
   }
 
   @Override

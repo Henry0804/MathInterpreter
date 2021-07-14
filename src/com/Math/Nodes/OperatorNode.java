@@ -5,6 +5,7 @@ import com.Math.Token;
 import com.Math.TokenType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class OperatorNode implements Node {
   public Token OperationToken = new Token(TokenType.Operator,"_");
@@ -32,13 +33,13 @@ public class OperatorNode implements Node {
 
   }
 
-  public @Override float QuickParse() {
+  public @Override float QuickParse(HashMap<String,Float> vars) {
     switch (OperationToken.Value) {
-      case "+": return LeftNode.QuickParse() + RightNode.QuickParse();
-      case "-": return LeftNode.QuickParse() - RightNode.QuickParse();
-      case "*": return LeftNode.QuickParse() * RightNode.QuickParse();
-      case "/": return LeftNode.QuickParse() / RightNode.QuickParse();
-      case "**": return (float) Math.pow(LeftNode.QuickParse() , RightNode.QuickParse());
+      case "+": return LeftNode.QuickParse(vars) + RightNode.QuickParse(vars);
+      case "-": return LeftNode.QuickParse(vars) - RightNode.QuickParse(vars);
+      case "*": return LeftNode.QuickParse(vars) * RightNode.QuickParse(vars);
+      case "/": return LeftNode.QuickParse(vars) / RightNode.QuickParse(vars);
+      case "**": return (float) Math.pow(LeftNode.QuickParse(vars) , RightNode.QuickParse(vars));
     }
     return 0;
   }

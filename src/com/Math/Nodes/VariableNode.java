@@ -7,9 +7,9 @@ import com.Math.TokenType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NumberNode implements Node {
+public class VariableNode implements Node {
   public Token OperationToken = null;
-  public NumberNode(Token tok) {
+  public VariableNode(Token tok) {
     OperationToken = tok;
 
   }
@@ -25,7 +25,7 @@ public class NumberNode implements Node {
   }
 
   public @Override float QuickParse(HashMap<String,Float> vars) {
-    return Float.parseFloat(OperationToken.Value);
+    return vars.get(OperationToken.Value);
   }
 
   @Override

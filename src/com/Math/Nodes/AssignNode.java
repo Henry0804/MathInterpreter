@@ -2,15 +2,18 @@ package com.Math.Nodes;
 
 import com.Math.Node;
 import com.Math.Token;
-import com.Math.TokenType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class NumberNode implements Node {
+public class AssignNode implements Node {
   public Token OperationToken = null;
-  public NumberNode(Token tok) {
+  Node LeftNode = null;
+  Node RightNode = null;
+  public AssignNode(Token tok,Node left,Node right) {
     OperationToken = tok;
+    LeftNode = left;
+    RightNode = right;
 
   }
 
@@ -25,12 +28,14 @@ public class NumberNode implements Node {
   }
 
   public @Override float QuickParse(HashMap<String,Float> vars) {
-    return Float.parseFloat(OperationToken.Value);
+    vars.remove(LeftNode.GetToken().Value);
+    vars.put(LeftNode.GetToken().Value,RightNode.QuickParse(vars));
+    return RightNode.QuickParse(vars);
   }
 
   @Override
   public String toString() {
-    if (OperationToken==null) {return "NumberNode{ERROR}";}
-    return "NumberNode{" + OperationToken.Value+ "}";
+    if (OperationToken==null) {return "AssignNode{ERROR}";}
+    return "AssignNode{" + OperationToken.Value+ "}";
   }
 }

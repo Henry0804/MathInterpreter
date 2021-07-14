@@ -1,10 +1,9 @@
 package com.Math;
 
-import com.Math.Nodes.NumberNode;
-import com.Math.Nodes.OperatorNode;
-import com.Math.Nodes.ParenthesisNode;
+import com.Math.Nodes.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +18,10 @@ public class Parser {
 
       } else if (t.Type==TokenType.Parenthesis) {
         Out.add(new ParenthesisNode(t) );
+      } else if (t.Type==TokenType.Variable) {
+        Out.add(new VariableNode(t));
+      } else if (t.Type==TokenType.Assign) {
+        Out.add(new AssignNode(t,null,null));
       }
 
 
@@ -29,7 +32,7 @@ public class Parser {
   }
 
   public static ArrayList<Node> Parse(ArrayList<Node> Nodes) {
-    return ConvertExpression(ConvertFactors(ConvertPow(ConvertParenthesis(FixNegativeNumbers(Nodes)))));
+    return ConvertAssignment(ConvertExpression(ConvertFactors(ConvertPow(ConvertParenthesis(FixNegativeNumbers(Nodes))))));
   }
 
   public static void RemoveRange(ArrayList<Node> Nodes,int start,int end) {
@@ -48,7 +51,7 @@ public class Parser {
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type==TokenType.Parenthesis&&(!value.equals(")"))) {
+      if (type==TokenType.Parenthesis&&(value.equals("("))) {
         Values.add(value);
         depth ++;
         if (depth==1) {
@@ -127,6 +130,27 @@ public class Parser {
     return Nodes;
   }
 
+  public static ArrayList<Node> ConvertAssignment(ArrayList<Node> Nodes) {
+    for (int i = 0; i < Nodes.size(); i++) {
+      Node n = Nodes.get(i);
+
+      TokenType type = n.GetToken().Type;
+      String value = n.GetToken().Value;
+      if (type==TokenType.Assign&&(value.equals("=") )  ) {
+        Node left = Nodes.get(i-1);
+        Node right = Nodes.get(i+1);
+        AssignNode out = new AssignNode(n.GetToken(),left,right);
+        Nodes.set(i,out);
+        Nodes.remove(i-1);
+        Nodes.remove(i);
+        i--;
+      }
+
+
+    }
+    return Nodes;
+  }
+
   public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {//Obsolete
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
@@ -169,7 +193,7 @@ public class Parser {
     return Nodes;
   }
 
-  public static float QuickParse(ArrayList<Node> Nodes) {
-    return Nodes.get(0).QuickParse();
+  public static float QuickParse(ArrayList<Node> Nodes, HashMap<String,Float> vars) {
+    return Nodes.get(0).QuickParse(vars);
   }
 }
