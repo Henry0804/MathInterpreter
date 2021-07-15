@@ -33,6 +33,15 @@ public class OperatorNode implements Node {
 
   }
 
+  public static float factorial(float n2) {
+    float fact = 1;
+    int n = Math.round(n2);
+    for (int i = 2; i <= n; i++) {
+      fact = fact * i;
+    }
+    return fact;
+  }
+
   public @Override float QuickParse(HashMap<String,Float> vars) {
     switch (OperationToken.Value) {
       case "+": return LeftNode.QuickParse(vars) + RightNode.QuickParse(vars);
@@ -40,6 +49,7 @@ public class OperatorNode implements Node {
       case "*": return LeftNode.QuickParse(vars) * RightNode.QuickParse(vars);
       case "/": return LeftNode.QuickParse(vars) / RightNode.QuickParse(vars);
       case "**": return (float) Math.pow(LeftNode.QuickParse(vars) , RightNode.QuickParse(vars));
+      case "%": return (LeftNode.QuickParse(vars) % RightNode.QuickParse(vars) );
     }
     return 0;
   }

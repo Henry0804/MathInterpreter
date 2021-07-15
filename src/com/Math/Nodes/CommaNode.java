@@ -2,14 +2,13 @@ package com.Math.Nodes;
 
 import com.Math.Node;
 import com.Math.Token;
-import com.Math.TokenType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class VariableNode implements Node {
+public class CommaNode implements Node {
   public Token OperationToken = null;
-  public VariableNode(Token tok) {
+  public CommaNode(Token tok) {
     OperationToken = tok;
 
   }
@@ -25,13 +24,12 @@ public class VariableNode implements Node {
   }
 
   public @Override float QuickParse(HashMap<String,Float> vars) {
-    if (vars.get(OperationToken.Value)!=null) {return vars.get(OperationToken.Value);}
-    return 0f;
+    return Float.parseFloat(OperationToken.Value);
   }
 
   @Override
   public String toString() {
-    if (OperationToken==null) {return "VarNode{ERROR}";}
-    return "VarNode{" + OperationToken.Value+ "}";
+    if (OperationToken==null) {return "CommaNode{ERROR}";}
+    return "CommaNode{" + OperationToken.Value+ "}";
   }
 }

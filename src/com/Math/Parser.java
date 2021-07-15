@@ -22,6 +22,8 @@ public class Parser {
         Out.add(new VariableNode(t));
       } else if (t.Type==TokenType.Assign) {
         Out.add(new AssignNode(t,null,null));
+      } else if (t.Type==TokenType.Comma) {
+        Out.add(new CommaNode(t) );
       }
 
 
@@ -32,7 +34,13 @@ public class Parser {
   }
 
   public static ArrayList<Node> Parse(ArrayList<Node> Nodes) {
-    return ConvertAssignment(ConvertExpression(ConvertFactors(ConvertPow(ConvertParenthesis(FixNegativeNumbers(Nodes))))));
+    /*
+    First fixes negative numbers. (Not everything is fixed though)
+    Then converts all parenthesis and loops a bunch of times.
+    And also fixes function based stuff.
+    After that the program calculates power, factors, expressions, and then assignments aka =.
+     */
+    return ConvertAssignment(ConvertExpression(ConvertFactors(ConvertPow(ConvertFunctions(ConvertParenthesis(FixNegativeNumbers(Nodes)))))));
   }
 
   public static void RemoveRange(ArrayList<Node> Nodes,int start,int end) {
@@ -112,7 +120,7 @@ public class Parser {
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type==TokenType.Operator&&(value.equals("*") || value.equals("/"))) {
+      if (type==TokenType.Operator&&(value.equals("*") || value.equals("/") || value.equals("%"))) {
         Node left = Nodes.get(i-1);
         Node right = Nodes.get(i+1);
         OperatorNode out = new OperatorNode(n.GetToken(),left,right);
@@ -148,7 +156,7 @@ public class Parser {
     return Nodes;
   }
 
-  public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {//Obsolete
+  public static ArrayList<Node> FixNegativeNumbers(ArrayList<Node> Nodes) {
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
 
@@ -161,6 +169,26 @@ public class Parser {
     }
     return Nodes;
   }
+
+  public static ArrayList<Node> ConvertFunctions(ArrayList<Node> Nodes) {
+    for (int i = 0; i < Nodes.size(); i++) {
+      Node n = Nodes.get(i);
+
+      TokenType type = n.GetToken().Type;
+      String value = n.GetToken().Value;
+      if (type == TokenType.Parenthesis) {
+        //n.GetToken().Value = n.GetToken().Value.substring(0, n.GetToken().Value.length() - 1);
+        //Nodes.get(i + 1).GetToken().Value = "-" + Nodes.get(i + 1).GetToken().Value;
+        if (i==0) {continue;}
+        if (Nodes.get(i-1).GetToken().Type!=TokenType.Variable) {continue;}
+        n.GetToken().Value = Nodes.get(i-1).GetToken().Value;
+        Nodes.remove(i-1);
+        i--;
+      }
+    }
+    return Nodes;
+  }
+
 
   public static ArrayList<Node> ConvertExpression(ArrayList<Node> Nodes) {
     for (int i = 0; i < Nodes.size(); i++) {
