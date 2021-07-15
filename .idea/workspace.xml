@@ -7,14 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2170fd96-126c-463c-bc58-f86e85aaa1ab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/Math/Nodes/CommaNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/OperatorNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/OperatorNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/VariableNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/VariableNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/TokenType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
