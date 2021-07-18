@@ -8,6 +8,24 @@
   <component name="ChangeListManager">
     <list default="true" id="2170fd96-126c-463c-bc58-f86e85aaa1ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/AssignNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/AssignNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/CommaNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/CommaNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/NumberNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/NumberNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/OperatorNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/OperatorNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/ParenthesisNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/ParenthesisNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/VariableNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/VariableNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/AssignNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/AssignNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/CommaNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/CommaNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/NumberNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/NumberNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/OperatorNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/OperatorNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/ParenthesisNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Nodes/VariableNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Nodes/VariableNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/Math/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,9 +120,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">

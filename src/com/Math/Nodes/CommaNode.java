@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class CommaNode implements Node {
   public Token OperationToken = null;
+
   public CommaNode(Token tok) {
     OperationToken = tok;
 
@@ -23,13 +24,28 @@ public class CommaNode implements Node {
     return null;
   }
 
-  public @Override float QuickParse(HashMap<String,Float> vars) {
+  public @Override
+  float QuickParse(HashMap<String, Float> vars) {
     return Float.parseFloat(OperationToken.Value);
   }
 
   @Override
   public String toString() {
-    if (OperationToken==null) {return "CommaNode{ERROR}";}
-    return "CommaNode{" + OperationToken.Value+ "}";
+    if (OperationToken == null) {
+      return "CommaNode{ERROR}";
+    }
+    return "CommaNode{" + OperationToken.Value + "}";
+  }
+
+  private boolean InvertOutput = false;
+
+  @Override
+  public boolean GetInvert() {
+    return InvertOutput;
+  }
+
+  @Override
+  public void SetInvert(boolean v) {
+    InvertOutput = v;
   }
 }

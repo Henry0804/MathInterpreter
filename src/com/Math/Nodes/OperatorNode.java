@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OperatorNode implements Node {
-  public Token OperationToken = new Token(TokenType.Operator,"_");
+  public Token OperationToken = new Token(TokenType.Operator, "_");
   public Node LeftNode = null;
   public Node RightNode = null;
-  public OperatorNode(Token tok,Node leftNode,Node rightNode) {
+
+  public OperatorNode(Token tok, Node leftNode, Node rightNode) {
     OperationToken = tok;
     LeftNode = leftNode;
     RightNode = rightNode;
@@ -42,14 +43,51 @@ public class OperatorNode implements Node {
     return fact;
   }
 
-  public @Override float QuickParse(HashMap<String,Float> vars) {
-    switch (OperationToken.Value) {
-      case "+": return LeftNode.QuickParse(vars) + RightNode.QuickParse(vars);
-      case "-": return LeftNode.QuickParse(vars) - RightNode.QuickParse(vars);
-      case "*": return LeftNode.QuickParse(vars) * RightNode.QuickParse(vars);
-      case "/": return LeftNode.QuickParse(vars) / RightNode.QuickParse(vars);
-      case "**": return (float) Math.pow(LeftNode.QuickParse(vars) , RightNode.QuickParse(vars));
-      case "%": return (LeftNode.QuickParse(vars) % RightNode.QuickParse(vars) );
+  public @Override
+  float QuickParse(HashMap<String, Float> vars) {
+
+    if (!InvertOutput) {
+
+      switch (OperationToken.Value) {
+        case "+":
+          return LeftNode.QuickParse(vars) + RightNode.QuickParse(vars);
+        case "-":
+          return LeftNode.QuickParse(vars) - RightNode.QuickParse(vars);
+        case "*":
+          return LeftNode.QuickParse(vars) * RightNode.QuickParse(vars);
+        case "/":
+          return LeftNode.QuickParse(vars) / RightNode.QuickParse(vars);
+        case "**":
+          return (float) Math.pow(LeftNode.QuickParse(vars), RightNode.QuickParse(vars));
+        case "%":
+          return (LeftNode.QuickParse(vars) % RightNode.QuickParse(vars));
+        case "+-":
+          return LeftNode.QuickParse(vars) + -RightNode.QuickParse(vars);
+        case "--":
+          return LeftNode.QuickParse(vars) - -RightNode.QuickParse(vars);
+        case "*-":
+          return LeftNode.QuickParse(vars) * -RightNode.QuickParse(vars);
+        case "/-":
+          return LeftNode.QuickParse(vars) + -RightNode.QuickParse(vars);
+        case "%-":
+          return LeftNode.QuickParse(vars) % -RightNode.QuickParse(vars);
+      }
+
+    } else {
+      switch (OperationToken.Value) {
+        case "+":
+          return -LeftNode.QuickParse(vars) + RightNode.QuickParse(vars);
+        case "-":
+          return -LeftNode.QuickParse(vars) - RightNode.QuickParse(vars);
+        case "*":
+          return -LeftNode.QuickParse(vars) * RightNode.QuickParse(vars);
+        case "/":
+          return -LeftNode.QuickParse(vars) / RightNode.QuickParse(vars);
+        case "**":
+          return -(float) Math.pow(LeftNode.QuickParse(vars), RightNode.QuickParse(vars));
+        case "%":
+          return -(LeftNode.QuickParse(vars) % RightNode.QuickParse(vars));
+      }
     }
     return 0;
   }
@@ -58,11 +96,23 @@ public class OperatorNode implements Node {
   public String toString() {
     //if (LeftNode==null||RightNode==null||OperationToken!=null) {return "OperatorNode{"+OperationToken+"}";}
     //if (LeftNode==null||RightNode==null||OperationToken==null) {return "OperatorNode{ERROR}";}
-    if (LeftNode==null||RightNode==null) {
+    if (LeftNode == null || RightNode == null) {
       return "OperatorNode{" + OperationToken.Value + "}";
     } else {
       return "OperatorNode{" + LeftNode.toString() + "," + OperationToken.Value + "," + RightNode.toString() + "}";
     }
 
+  }
+
+  private boolean InvertOutput = false;
+
+  @Override
+  public boolean GetInvert() {
+    return InvertOutput;
+  }
+
+  @Override
+  public void SetInvert(boolean v) {
+    InvertOutput = v;
   }
 }

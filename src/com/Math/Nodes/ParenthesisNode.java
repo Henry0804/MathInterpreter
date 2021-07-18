@@ -33,7 +33,7 @@ public class ParenthesisNode implements Node {
   public @Override float QuickParse(HashMap<String,Float> vars) {
     //return Parser.ConvertParenthesis(Nodes);
     ArrayList<Node> Args = GetArgs();
-    float f = 0f;
+    float f = 0;
     if (OperationToken.Value.equals(")")) {
       for (Node a : Args) {
         f += a.QuickParse(vars);
@@ -47,6 +47,7 @@ public class ParenthesisNode implements Node {
 
     }
     //return Nodes.get(0).QuickParse(vars);
+    if (InvertOutput) {f = -f;}
     return f;
   }
 
@@ -62,9 +63,21 @@ public class ParenthesisNode implements Node {
 
   @Override
   public String toString() {
-    if (Nodes==null) {return "ParenthesisNode{ERROR, "+OperationToken+"}";}
-    return "ParenthesisNode{" + Nodes + "}";
+    if (InvertOutput) {return "1";} else {return "0";}
+    //if (Nodes==null) {return "ParenthesisNode{ERROR, "+OperationToken+"}";}
+    //return "ParenthesisNode{" + Nodes + "}";
   }
 
+  private boolean InvertOutput = false;
+
+  @Override
+  public boolean GetInvert() {
+    return InvertOutput;
+  }
+
+  @Override
+  public void SetInvert(boolean v) {
+    InvertOutput = v;
+  }
 
 }

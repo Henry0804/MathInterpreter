@@ -53,6 +53,7 @@ public class Parser {
   public static ArrayList<Node> ConvertParenthesis(ArrayList<Node> Nodes) {
     int depth = 0;
     int start = 0;
+    boolean invert = false;
     //ArrayList<String> Values = new ArrayList<>(5);
     for (int i = 0; i < Nodes.size(); i++) {
       Node n = Nodes.get(i);
@@ -62,8 +63,10 @@ public class Parser {
       if (type==TokenType.Parenthesis&&(value.equals("("))) {
         depth ++;
         if (depth==1) {
+          invert = n.GetInvert();
           start = i;
         }
+
       } else if (type==TokenType.Parenthesis&&value.equals(")")) {
         depth --;
         if (depth==0) {
@@ -71,11 +74,13 @@ public class Parser {
           ArrayList<Node> split2 = new ArrayList<Node>(split);
           RemoveRange(Nodes,start,i);
           i = start;
+          //invert = n.GetInvert();
           Nodes.remove(i);
 
 
-
-          Nodes.add(start,new ParenthesisNode(new Token(TokenType.Parenthesis,")"),split2)/*element*/);
+          Node add = new ParenthesisNode(new Token(TokenType.Parenthesis,")"),split2);
+          add.SetInvert(invert);
+          Nodes.add(start,add);
         }
 
       }
@@ -120,7 +125,7 @@ public class Parser {
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type==TokenType.Operator&&(value.equals("*") || value.equals("/") || value.equals("%"))) {
+      if (type==TokenType.Operator&&(value.equals("*") || value.equals("/") || value.equals("%")  || value.equals("%-") || value.equals("*-") || value.equals("/-"))) {
         Node left = Nodes.get(i-1);
         Node right = Nodes.get(i+1);
         OperatorNode out = new OperatorNode(n.GetToken(),left,right);
@@ -162,10 +167,27 @@ public class Parser {
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type == TokenType.Operator && (value.equals("+-") || value.equals("--") || value.equals("*-") || value.equals("/-") || value.equals("**-"))) {
-        n.GetToken().Value = n.GetToken().Value.substring(0, n.GetToken().Value.length() - 1);
-        Nodes.get(i + 1).GetToken().Value = "-" + Nodes.get(i + 1).GetToken().Value;
+      /*if (type == TokenType.Operator && (value.equals("+-") || value.equals("--") || value.equals("*-") || value.equals("/-") || value.equals("**-"))) {
+        //n.GetToken().Value = n.GetToken().Value.substring(0, n.GetToken().Value.length() - 1);
+        //Nodes.get(i + 1).GetToken().Value = "-" + Nodes.get(i + 1).GetToken().Value;
+
+      }*/
+
+      if ((i+1)>Nodes.size()-1) {continue;}
+
+      boolean and = true;
+
+      if (i>0) {
+        and = Nodes.get(i + 1).GetToken().Type!=TokenType.Number && Nodes.get(i - 1).GetToken().Type!=TokenType.Number;
+      } //else {
+      //  and = Nodes.get(i + 1).GetToken().Type!=TokenType.Number;
+      //}
+
+      if (type == TokenType.Operator && value.equals("-") && and ) {
+        Nodes.remove(i);
+        Nodes.get(i).SetInvert(!Nodes.get(i).GetInvert());
       }
+
     }
     return Nodes;
   }
@@ -196,7 +218,7 @@ public class Parser {
 
       TokenType type = n.GetToken().Type;
       String value = n.GetToken().Value;
-      if (type==TokenType.Operator&&(value.equals("+") || value.equals("-"))) {
+      if (type==TokenType.Operator&&(value.equals("+") || value.equals("-") || value.equals("--") || value.equals("+-") ) ) {
         Node left;
         if (i-1==-1) {left = new NumberNode(new Token(TokenType.Number,"0"));} else {
           left = Nodes.get(i - 1);

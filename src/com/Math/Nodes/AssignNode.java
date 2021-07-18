@@ -10,7 +10,8 @@ public class AssignNode implements Node {
   public Token OperationToken = null;
   Node LeftNode = null;
   Node RightNode = null;
-  public AssignNode(Token tok,Node left,Node right) {
+
+  public AssignNode(Token tok, Node left, Node right) {
     OperationToken = tok;
     LeftNode = left;
     RightNode = right;
@@ -27,16 +28,34 @@ public class AssignNode implements Node {
     return null;
   }
 
-  public @Override float QuickParse(HashMap<String,Float> vars) {
+  public @Override
+  float QuickParse(HashMap<String, Float> vars) {
     float val = RightNode.QuickParse(vars);
     vars.remove(LeftNode.GetToken().Value);
-    vars.put(LeftNode.GetToken().Value,val);
+    vars.put(LeftNode.GetToken().Value, val);
+    if (InvertOutput) {
+      val = -val;
+    }
     return val;
   }
 
   @Override
   public String toString() {
-    if (OperationToken==null) {return "AssignNode{ERROR}";}
-    return "AssignNode{" + OperationToken.Value+ "}";
+    if (OperationToken == null) {
+      return "AssignNode{ERROR}";
+    }
+    return "AssignNode{" + OperationToken.Value + "}";
+  }
+
+  private boolean InvertOutput = false;
+
+  @Override
+  public boolean GetInvert() {
+    return InvertOutput;
+  }
+
+  @Override
+  public void SetInvert(boolean v) {
+    InvertOutput = v;
   }
 }

@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 public class NumberNode implements Node {
   public Token OperationToken = null;
+
   public NumberNode(Token tok) {
     OperationToken = tok;
 
@@ -24,13 +25,34 @@ public class NumberNode implements Node {
     return null;
   }
 
-  public @Override float QuickParse(HashMap<String,Float> vars) {
-    return Float.parseFloat(OperationToken.Value);
+  public @Override
+  float QuickParse(HashMap<String, Float> vars) {
+    float val = Float.parseFloat(OperationToken.Value);
+    if (InvertOutput) {
+      val = -val;
+    }
+    return val;
   }
 
   @Override
   public String toString() {
-    if (OperationToken==null) {return "NumberNode{ERROR}";}
-    return "NumberNode{" + OperationToken.Value+ "}";
+    if (OperationToken == null) {
+      return "NumberNode{ERROR}";
+    }
+    if (InvertOutput) {return "NumberNode{-" + OperationToken.Value + "}";} else {
+      return "NumberNode{" + OperationToken.Value + "}";
+    }
+  }
+
+  private boolean InvertOutput = false;
+
+  @Override
+  public boolean GetInvert() {
+    return InvertOutput;
+  }
+
+  @Override
+  public void SetInvert(boolean v) {
+    InvertOutput = v;
   }
 }

@@ -9,6 +9,8 @@ public class Main {
   public static void main(String[] args) {
     HashMap<String,Float> variables = new HashMap<String,Float>();
     variables.put("pi", ((float) Math.PI));
+    variables.put("Infinity",Float.POSITIVE_INFINITY);
+    variables.put("NaN",Float.NaN);
     System.out.println("Starting calc...");
     Scanner scan = new Scanner(System.in);
     int debug = 0;
@@ -26,7 +28,8 @@ public class Main {
         v+=Test("5**8-7*(90)/3-84+6",390337f);
         v+=Test("x = 3",3f);
         v+=Test("x = x + 1",1f);
-        System.out.println(v+"/7 tests succeeded.");
+        v+=Test("-(1+1)",-2f);
+        System.out.println(v+"/8 tests succeeded.");
       }
       else if (input.equals("debug")) {debug++;if (debug==4) {debug = 0;};System.out.println("Debug mode is: "+debug);} else {
         switch(debug) {
