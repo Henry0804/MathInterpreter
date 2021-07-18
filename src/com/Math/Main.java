@@ -9,8 +9,8 @@ public class Main {
   public static void main(String[] args) {
     HashMap<String,Float> variables = new HashMap<String,Float>();
     variables.put("pi", ((float) Math.PI));
-    variables.put("Infinity",Float.POSITIVE_INFINITY);
-    variables.put("NaN",Float.NaN);
+    variables.put("infinity",Float.POSITIVE_INFINITY);
+    variables.put("nan",Float.NaN);
     System.out.println("Starting calc...");
     Scanner scan = new Scanner(System.in);
     int debug = 0;
