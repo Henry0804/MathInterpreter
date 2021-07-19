@@ -6,11 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2170fd96-126c-463c-bc58-f86e85aaa1ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/ParenthesisNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MathInterpreter/com/Math/Nodes/ParenthesisNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/Math/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/Math/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="2170fd96-126c-463c-bc58-f86e85aaa1ab" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
