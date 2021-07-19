@@ -63,9 +63,9 @@ public class ParenthesisNode implements Node {
 
   @Override
   public String toString() {
-    if (InvertOutput) {return "1";} else {return "0";}
-    //if (Nodes==null) {return "ParenthesisNode{ERROR, "+OperationToken+"}";}
-    //return "ParenthesisNode{" + Nodes + "}";
+    //if (InvertOutput) {return "1";} else {return "0";}
+    if (Nodes==null) {return "ParenthesisNode{ERROR, "+OperationToken+"}";}
+    return "ParenthesisNode{" + Nodes + "}";
   }
 
   private boolean InvertOutput = false;
