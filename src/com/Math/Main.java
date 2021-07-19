@@ -31,7 +31,8 @@ public class Main {
         v+=Test("-(1+1)",-2f);
         System.out.println(v+"/8 tests succeeded.");
       }
-      else if (input.equals("debug")) {debug++;if (debug==4) {debug = 0;};System.out.println("Debug mode is: "+debug);} else {
+      else if (input.equals("debug")) {debug++;if (debug==4) {debug = 0;};System.out.println("Debug mode is: "+debug);} else if (input.equals("version")) {System.out.println("Calc Version > v1.1.1");}
+    else {
         switch(debug) {
           case 0: System.out.println("Result is: "+  Parser.QuickParse(Parser.Parse(Parser.ToNodes(Lexer.Parse(input))),variables)  );break;//Output
           case 1: System.out.println("Token output: "+ Lexer.Parse(input));break;
